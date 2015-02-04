@@ -53,8 +53,8 @@ default['rvm']['root_path']     = "/usr/local/rvm"
 default['rvm']['group_id']      = 'default'
 default['rvm']['group_users']   = []
 
-+# Autolibs
-+default['rvm']['autolibs'] = "enabled"
+# Autolibs
+default['rvm']['autolibs'] = "enabled"
 
 # GPG key for rvm verification
 default['rvm']['gpg_key']       = 'D39DC0E3'
