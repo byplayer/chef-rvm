@@ -32,16 +32,11 @@ Array(node['rvm']['user_installs']).each do |rvm_user|
                             node['rvm']['user_global_gems']
   gems                    = rvm_user['gems'] ||
                             node['rvm']['user_gems']
-  autolibs                = rvm_user['autolibs'] ||
-                            node['rvm']['autolibs']
-
-  Chef::Log.info("autolibs config: #{autolibs}, #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}")
   if perform_install_rubies
     install_rubies  :rubies => rubies,
                     :default_ruby => default_ruby,
                     :global_gems => global_gems,
                     :gems => gems,
-                    :autolibs => autolibs,
                     :user => rvm_user['user']
   end
 end
