@@ -20,7 +20,7 @@
 include_recipe 'rvm::user_install'
 
 Array(node['rvm']['user_installs']).each do |rvm_user|
-  Chef::Log.info("user config: #{rvm_user.inspect}")
+  
 
   perform_install_rubies  = rvm_user['install_rubies'] == true ||
                             rvm_user['install_rubies'] == "true" ||
@@ -37,6 +37,7 @@ Array(node['rvm']['user_installs']).each do |rvm_user|
   autolibs                = rvm_user['autolibs'] ||
                             node['rvm']['autolibs']
 
+  Chef::Log.info("autolibs config: #{autolibs}, #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}")
   if perform_install_rubies
     install_rubies  :rubies => rubies,
                     :default_ruby => default_ruby,
