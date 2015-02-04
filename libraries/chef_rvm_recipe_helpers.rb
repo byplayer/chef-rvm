@@ -24,6 +24,11 @@ class Chef
     module RecipeHelpers
 
       def install_rubies(opts = {})
+        if opts[:autolibs]
+          Chef::Log.info("set user autolibs: #{opts[:autolibs]}")
+          rvm("autolibs #{opts[:autolibs]}")
+        end
+        
         # install additional rubies
         opts[:rubies].each do |rubie|
           if rubie.is_a?(Hash)
