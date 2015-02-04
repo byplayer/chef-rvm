@@ -26,7 +26,7 @@ class Chef
       def install_rubies(opts = {})
         if opts[:autolibs]
           Chef::Log.info("set user autolibs: #{opts[:autolibs]}")
-          rvm("autolibs #{opts[:autolibs]}")
+          rvm_shell_out!("#{rvm_path}/scripts/rvm autolibs #{opts[:autolibs]}")
         end
         
         # install additional rubies
