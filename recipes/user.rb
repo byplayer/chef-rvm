@@ -20,7 +20,7 @@
 include_recipe 'rvm::user_install'
 
 Array(node['rvm']['user_installs']).each do |rvm_user|
-  fail "autolibs config: #{autolibs}, #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}"
+  fail "autolibs config: #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}"
 
   perform_install_rubies  = rvm_user['install_rubies'] == true ||
                             rvm_user['install_rubies'] == "true" ||
