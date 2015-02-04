@@ -103,6 +103,7 @@ class Chef
       end
 
       def set_autolibs
+        fail 'Hey'
         if new_resource.autolibs
           Chef::Log.info("set autolibs: #{new_resource.autolibs}")
           rvm("autolibs #{new_resource.autolibs}")

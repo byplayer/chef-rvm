@@ -35,7 +35,6 @@ Array(node['rvm']['user_installs']).each do |rvm_user|
   autolibs                = rvm_user['autolibs'] ||
                             node['rvm']['autolibs']
 
-  fail "autolibs config: #{autolibs}, #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}"
   Chef::Log.info("autolibs config: #{autolibs}, #{rvm_user['autolibs']}, #{node['rvm']['autolibs']}")
   if perform_install_rubies
     install_rubies  :rubies => rubies,
