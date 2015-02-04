@@ -49,14 +49,20 @@ class Chef
         else
           converge_install
         end
+        converge_autolibs
       end
 
       def action_force
         converge_rvmrc
+        converge_autolibs
       end
 
       def converge_rvmrc
         converge_by("manage rvmrc for #{new_resource}") { write_rvmrc }
+      end
+
+      def converge_autolibs
+        converge_by("manage autolibs for #{new_resource}") { set_autolibs }
       end
 
       def converge_install
@@ -94,6 +100,16 @@ class Chef
         )
         r.run_action(:create)
         r
+      end
+
+      def set_autolibs
+        if new_resource.autolibs
+          Chef::Log.info("set autolibs: #{new_resource.autolibs}")
+          rvm("autolibs #{new_resource.autolibs}")
+        else
+          Chef::Log.info('no autolibs configuration. set default')
+          rvm('autolibs reset')
+        end
       end
 
       def download_installer

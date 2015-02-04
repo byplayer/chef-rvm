@@ -47,6 +47,7 @@ class Chef
         @rvmrc_gem_options = node_attrs["gem_options"]
         @default_rvmrc_env = Mash.new(node_attrs["rvmrc_env"])
         @rvmrc_env = node_attrs["rvmrc_env"]
+        @autolibs = node_attrs["autolibs"]
         @installed = false
         @version = nil
       end
@@ -90,6 +91,10 @@ class Chef
 
       def version(arg = nil)
         set_or_return(:version, arg, :kind_of => [String])
+      end
+
+      def autolibs(arg = nil)
+        set_or_return(:autolibs, arg, :kind_of => [String])
       end
 
       private
