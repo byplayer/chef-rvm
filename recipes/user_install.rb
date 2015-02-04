@@ -28,7 +28,7 @@ node["rvm"]["installs"].each do |user, opts|
 
   rvm_installation(user.to_s) do
     %w(installer_url installer_flags install_pkgs rvmrc_template_source
-      rvmrc_template_cookbook rvmrc_env action autolibs
+      rvmrc_template_cookbook rvmrc_env action
     ).each do |attr|
       # if user hash attr is set, then set the resource attr
       send(attr, opts[attr]) if opts.fetch(attr, false)
